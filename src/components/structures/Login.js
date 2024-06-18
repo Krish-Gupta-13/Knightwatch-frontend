@@ -31,7 +31,7 @@ const Login = () => {
     //   console.log("send request failed", err);
     // }
 
-      const res = await axios.post('https://knightwatch.onrender.com/api/login', {
+      const res = await axios.post('http://localhost:5000/api/login', {
         email, password
       }).catch((err) => console.log("incorrect credentials",err));
       const data = await res.data;

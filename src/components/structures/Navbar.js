@@ -21,7 +21,7 @@ function NavScrollExample() {
 
   const sendLogoutRequest = async () => {
     try {
-      const res = await axios.post("https://knightwatch.onrender.com/api/logout", null, {
+      const res = await axios.post("http://localhost:5000/api/logout", null, {
         withCredentials: true,
       });
       if (res.status === 200) {

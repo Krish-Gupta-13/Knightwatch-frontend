@@ -25,7 +25,7 @@ const Signup = () => {
   }
 
   const sendRequest = async () => {
-    const res = await axios.post("https://knightwatch.onrender.com/api/signup", {
+    const res = await axios.post("http://localhost:5000/api/signup", {
           name: name,
           email: email,
           password: password,

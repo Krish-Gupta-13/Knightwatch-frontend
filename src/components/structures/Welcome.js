@@ -12,7 +12,7 @@ const Welcome = () => {
   const [user, setUser] = useState('');
 
   const refreshToken = async () => {
-      const res = await axios.get('https://knightwatch.onrender.com/api/refresh', {
+      const res = await axios.get('http://localhost:5000/api/refresh', {
       withCredentials: true
       }).catch ((err) => console.log('Error refreshing token:', err)) 
       const data = res.data;
@@ -20,7 +20,7 @@ const Welcome = () => {
   }
 
   const sendRequest = async () => {
-      const res = await axios.get('https://knightwatch.onrender.com/api/user', {
+      const res = await axios.get('http://localhost:5000/api/user', {
         withCredentials: true
       }).catch((err)=> console.log('Error fetching user data:', err))
       const data = res.data;
@@ -54,7 +54,7 @@ export default Welcome
 
   // const refreshToken = async () => {
   //   try {
-  //     const res = await axios.get('host:5000/api/refresh', {
+  //     const res = await axios.get('http://localhost:5000/api/refresh', {
   //       withCredentials: true
   //     });
   //     const data = res.data;
