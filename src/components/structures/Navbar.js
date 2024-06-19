@@ -68,8 +68,8 @@ function NavScrollExample() {
 
   return (
     <React.Fragment>
-      <Navbar expand="lg" className="bg-body-tertiary">
-        <Container fluid >
+      <Navbar expand="lg" className="bg-body-tertiary full-body">
+        <Container fluid className="full-body">
           <Navbar.Brand className="heading" >KnightWatch</Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" onClick={handleToggle} />
           <Navbar.Collapse id="navbarScroll">
@@ -79,7 +79,7 @@ function NavScrollExample() {
               navbarScroll
             >
             {isLoggedIn && <> <Nav.Link href="/user" onClick={handleHome}>Home</Nav.Link></>}
-             <Nav.Link href="/description" onClick={handleDesc}>Description</Nav.Link>
+             <Nav.Link href="/description" onClick={handleDesc}>Formats</Nav.Link>
              <NavDropdown title="Platforms" id="navbarScrollingDropdown">
                 <NavDropdown.Item href="https://www.chess.com/" target="_blank">Chess.com</NavDropdown.Item>
                 <NavDropdown.Item href="https://lichess.org/" target="_blank">Lichess.org</NavDropdown.Item>
@@ -90,7 +90,7 @@ function NavScrollExample() {
               {!isLoggedIn && 
                 <Link to={"/login"} className="no-dec">
                   <button
-                    className="btn btn-outline-success header-btn islog signin"
+                    className="btn btn-outline-dark header-btn islog signin"
                     type="submit"
                   >
                     LogIn
@@ -99,7 +99,7 @@ function NavScrollExample() {
               }
               {!isLoggedIn && 
                 <Link to={"/signup"} className="no-dec">
-                  <button className="btn btn-outline-success islog signup" type="submit">
+                  <button className="btn btn-outline-dark islog signup" type="submit">
                     SignUp
                   </button>
                 </Link>
@@ -107,7 +107,7 @@ function NavScrollExample() {
               {isLoggedIn && 
                 <Link to={"/login"} className="no-dec">
                   <button
-                    className="btn btn-outline-success isout logout"
+                    className="btn btn-outline-dark isout logout"
                     type="submit"
                     onClick={handleLogout}
                   >

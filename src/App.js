@@ -12,6 +12,7 @@ import ChessClock from './components/structures/ChessClock';
 import Bullet from './components/structures/Bullet'
 import Rapid from './components/structures/Rapid'
 import Blitz from './components/structures/Blitz'
+import Footer from './components/structures/Footer'
 
 function App() {
   const isLoggedIn = useSelector((state) => state.isLoggedIn);
@@ -35,6 +36,9 @@ function App() {
           <Route path="/logout" element={<Signup/>} />
         </Routes>
       </main>
+      
+  
+      
     </React.Fragment>
   );
 }

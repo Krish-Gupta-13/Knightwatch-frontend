@@ -1,9 +1,12 @@
 body{
     background-color: #6dc44e;
 }
-
+.full-body{
+    background-color: #94d87b;
+    /* background-color: #4fafd2; */
+    border: 0px solid black;
+}
 .navbar-brand {
-    /* padding-left: 10%; */
     font: 4rem;
     margin-left: 5%;
 }
@@ -15,12 +18,9 @@ body{
 }
 
 .navbar{
-    background-color: aqua;
     height: 10vh;
 }
-nav{
-    background-color: aqua;
-}
+
 
 .islog{
     margin-left: 60%;
