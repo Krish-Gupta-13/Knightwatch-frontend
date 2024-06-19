@@ -20,12 +20,12 @@ const Welcome = () => {
   }
 
   const sendRequest = async () => {
-      const res = await axios.get('http://localhost:5000/api/user', {
-        withCredentials: true
-      }).catch((err)=> console.log('Error fetching user data:', err))
-      const data = res.data;
-      return data;
-    }
+    const res = await axios.get('http://localhost:5000/api/user', {
+      withCredentials: true
+    }).catch((err)=> console.log('Error fetching user data:', err))
+    const data = res.data;
+    return data;
+  }
 
   useEffect(() => {
     if(firstRender){

@@ -11,10 +11,12 @@ import axios from "axios";
 import { authActions } from "../../store/index.js";
 import NavbarStyling from '../styles/Navbar.css'
 import { login, logout, clock} from '../../store/index.js'
+import { useNavigate } from 'react-router-dom';
 
 axios.defaults.withCredentials = true;
 
 function NavScrollExample() {
+  const history = useNavigate();
   const dispatch = useDispatch();
   const isLoggedIn = useSelector((state) => state.isLoggedIn);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -33,24 +35,42 @@ function NavScrollExample() {
     return new Error("Unable to logout! Please try again");
   };
 
-
   const handleLogout = () => {
     sendLogoutRequest().then(() => dispatch(authActions.logout()));
-  };
-
-  const handleClock = () => {
-    dispatch(clock());
   };
 
   const handleToggle = () => {
     setMenuOpen(!menuOpen);
   };
 
+
+
+  const sendDesc = async () => {
+    const res = await axios.get('http://localhost:5000/api/user', {
+      withCredentials: true
+    }).catch((err)=> console.log('Error fetching user data:', err))
+    const data = res.data;
+    return data;
+  }
+  const handleDesc = (e) => {
+    e.preventDefault();
+    sendDesc().then(()=>dispatch(authActions.clock())).then(() => 
+      history("/description")
+    )
+  }
+
+  const handleHome = (e) => {
+    e.preventDefault();
+    sendDesc().then(()=>dispatch(authActions.clock())).then(() => 
+      history("/user")
+    )
+  }
+
   return (
     <React.Fragment>
       <Navbar expand="lg" className="bg-body-tertiary">
         <Container fluid >
-          <Navbar.Brand className="heading" href="/clock">KnightWatch</Navbar.Brand>
+          <Navbar.Brand className="heading" >KnightWatch</Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" onClick={handleToggle} />
           <Navbar.Collapse id="navbarScroll">
             <Nav
@@ -58,8 +78,8 @@ function NavScrollExample() {
               style={{ maxHeight: "150px" }}
               navbarScroll
             >
-            {isLoggedIn && <> <Nav.Link href="/user" onClick={handleClock}>Home</Nav.Link></>}
-             <Nav.Link href="/description">Description</Nav.Link>
+            {isLoggedIn && <> <Nav.Link href="/user" onClick={handleHome}>Home</Nav.Link></>}
+             <Nav.Link href="/description" onClick={handleDesc}>Description</Nav.Link>
              <NavDropdown title="Platforms" id="navbarScrollingDropdown">
                 <NavDropdown.Item href="https://www.chess.com/" target="_blank">Chess.com</NavDropdown.Item>
                 <NavDropdown.Item href="https://lichess.org/" target="_blank">Lichess.org</NavDropdown.Item>
@@ -70,7 +90,7 @@ function NavScrollExample() {
               {!isLoggedIn && 
                 <Link to={"/login"} className="no-dec">
                   <button
-                    className="btn btn-outline-success header-btn islog"
+                    className="btn btn-outline-success header-btn islog signin"
                     type="submit"
                   >
                     LogIn
@@ -79,7 +99,7 @@ function NavScrollExample() {
               }
               {!isLoggedIn && 
                 <Link to={"/signup"} className="no-dec">
-                  <button className="btn btn-outline-success islog" type="submit">
+                  <button className="btn btn-outline-success islog signup" type="submit">
                     SignUp
                   </button>
                 </Link>
@@ -87,7 +107,7 @@ function NavScrollExample() {
               {isLoggedIn && 
                 <Link to={"/login"} className="no-dec">
                   <button
-                    className="btn btn-outline-success isout"
+                    className="btn btn-outline-success isout logout"
                     type="submit"
                     onClick={handleLogout}
                   >

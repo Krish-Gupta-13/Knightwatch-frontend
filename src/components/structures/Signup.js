@@ -26,28 +26,13 @@ const Signup = () => {
 
   const sendRequest = async () => {
     const res = await axios.post("http://localhost:5000/api/signup", {
-          name: name,
-          email: email,
-          password: password,
-      }).catch((err) => console.log("email already exists!", err));
+      name: name,
+      email: email,
+      password: password,
+    }).catch((err) => console.log("email already exists!", err));
       const data = await res.data;
-        return data;
+      return data;
   }
-
-  // const sendRequest = async () => {
-  //   try {
-  //     const res = await axios.post("http://localhost:5000/api/signup", {
-  //       name: name,
-  //       email: email,
-  //       password: password,
-  //     });
-  //     const data = await res.data;
-  //     return data;
-  //   } catch (err) {
-  //     console.log("email already exists", err.response ? err.response.data : err.message);
-
-  //   }
-  // };
 
   // submit handler
   const handleSubmit = (e) => {
@@ -109,3 +94,18 @@ const Signup = () => {
 }
 
 export default Signup
+
+  // const sendRequest = async () => {
+  //   try {
+  //     const res = await axios.post("http://localhost:5000/api/signup", {
+  //       name: name,
+  //       email: email,
+  //       password: password,
+  //     });
+  //     const data = await res.data;
+  //     return data;
+  //   } catch (err) {
+  //     console.log("email already exists", err.response ? err.response.data : err.message);
+
+  //   }
+  // };

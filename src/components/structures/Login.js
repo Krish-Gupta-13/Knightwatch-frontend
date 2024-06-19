@@ -20,24 +20,11 @@ const Login = () => {
   }
 
   const sendRequest = async () => {
-    // try{
-    //   const res = await axios.post('http://localhost:5000/api/login', {
-    //     email, password
-    //   })
-    //   const data = await res.data;
-    //   return data;
-    // }
-    // catch(err){
-    //   console.log("send request failed", err);
-    // }
-
       const res = await axios.post('http://localhost:5000/api/login', {
         email, password
       }).catch((err) => console.log("incorrect credentials",err));
       const data = await res.data;
       return data;
-    
-    
   }
 
   const handleSubmit = (e) => {
@@ -98,3 +85,13 @@ const Login = () => {
 }
 
 export default Login
+    // try{
+    //   const res = await axios.post('http://localhost:5000/api/login', {
+    //     email, password
+    //   })
+    //   const data = await res.data;
+    //   return data;
+    // }
+    // catch(err){
+    //   console.log("send request failed", err);
+    // }

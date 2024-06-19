@@ -1,10 +1,13 @@
 import React from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import DescriptionStyling from '../styles/Description.css'
+import axios from 'axios';
+
 
 const Description = () => {
-  const dispatch = useDispatch();
-  const isLoggedIn = useSelector((state) => state.isLoggedIn);
+  
+
+
   return (
     <div className="des-container">
       <header>

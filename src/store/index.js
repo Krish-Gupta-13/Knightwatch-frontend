@@ -11,10 +11,13 @@ export const authSlice = createSlice({
             state.isLoggedIn = false
         },
         clock(state){
-            state.isLoggedIn = true
-        },
-        description(state){
-            state.isLoggedIn = true
+            if(state.isLoggedIn===true){
+                state.isLoggedIn = true
+            }
+            else{
+                state.isLoggedIn = false
+            }
+
         }
     }
 });

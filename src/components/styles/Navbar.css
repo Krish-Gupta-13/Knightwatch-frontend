@@ -23,7 +23,7 @@ nav{
 }
 
 .islog{
-    margin-left: 44%;
+    margin-left: 60%;
 }
 
 .no-dec{
@@ -34,6 +34,7 @@ nav{
 .heading{
     font-size: 1.6rem;
 }
+
 
 @media only screen and (max-width: 600px) and (min-width: 100px){
     .navbar-brand {
