@@ -20,7 +20,7 @@ const Login = () => {
   }
 
   const sendRequest = async () => {
-      const res = await axios.post('http://localhost:5000/api/login', {
+      const res = await axios.post('https://knightwatch-backend.onrender.com/api/login', {
         email, password
       }).catch((err) => console.log("incorrect credentials",err));
       const data = await res.data;
@@ -86,7 +86,7 @@ const Login = () => {
 
 export default Login
     // try{
-    //   const res = await axios.post('http://localhost:5000/api/login', {
+    //   const res = await axios.post('https://knightwatch-backend.onrender.com/api/login', {
     //     email, password
     //   })
     //   const data = await res.data;
