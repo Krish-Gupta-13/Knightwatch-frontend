@@ -71,15 +71,17 @@ function NavScrollExample() {
       <Navbar expand="lg" className="bg-body-tertiary full-body">
         <Container fluid className="full-body">
           <Navbar.Brand className="heading" >KnightWatch</Navbar.Brand>
-          <Navbar.Toggle aria-controls="navbarScroll" onClick={handleToggle} />
+          <Navbar.Toggle aria-controls="navbarScroll" 
+          
+          onClick={handleToggle} />
           <Navbar.Collapse id="navbarScroll">
             <Nav
-              className="me-auto my-2 my-lg-0"
-              style={{ maxHeight: "150px" }}
+              className="me-auto my-0 my-lg-0"
+              style={{ maxHeight: "150px"}}
               navbarScroll
             >
-            {isLoggedIn && <> <Nav.Link href="/user" onClick={handleHome}>Home</Nav.Link></>}
-             <Nav.Link href="/description" onClick={handleDesc}>Formats</Nav.Link>
+            {isLoggedIn && <> <Link to={"/user"} className="no-dec"><Nav.Link onClick={handleHome}>Home</Nav.Link></Link></>}
+            <Link to={"/description"} className="no-dec"> <Nav.Link onClick={handleDesc}>Formats</Nav.Link></Link>
              <NavDropdown title="Platforms" id="navbarScrollingDropdown">
                 <NavDropdown.Item href="https://www.chess.com/" target="_blank">Chess.com</NavDropdown.Item>
                 <NavDropdown.Item href="https://lichess.org/" target="_blank">Lichess.org</NavDropdown.Item>

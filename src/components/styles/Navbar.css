@@ -2,8 +2,8 @@ body{
     background-color: #6dc44e;
 }
 .full-body{
-    background-color: #94d87b;
-    /* background-color: #4fafd2; */
+    /* background-color: #07ef07; */
+    background-color: #4fafd2;
     border: 0px solid black;
 }
 .navbar-brand {
@@ -43,5 +43,8 @@ body{
     }    
     .bg-body-tertiary{
         min-height: 1vh;
+      }
+      #navbarScroll{
+        background-color: "black"
       }
 }
