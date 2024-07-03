@@ -20,23 +20,39 @@ const Login = () => {
   }
 
   const sendRequest = async () => {
-      const res = await axios.post('https://knightwatch-backend.onrender.com/api/login', {
+    try {
+      const res = await axios.post('http://localhost:5000/api/login', {
         email, password
-      }).catch((err) => console.log("incorrect credentials",err));
-      const data = await res.data;
-      return data;
-  }
+      });
 
-  const handleSubmit = (e) => {
+      console.log("user logged in successfully")
+      const data = res.data;
+      return data;
+      
+    } catch (err) {
+        console.log("Login failed with status", err.response.status);
+    }
+  };
+  
+
+
+  const handleSubmit = (e, err) => {
     e.preventDefault();
-    let arr = [email, password];
-    sendRequest().then(()=>dispatch(authActions.login())).then(() => 
-      history("/user")
-    )
-  }
+    sendRequest().then((data, err) => {
+      if (data) {
+        dispatch(authActions.login());
+        history("/user");
+      } else {
+        // <alert>"Invalid credentials"</alert>
+        console.log("Invalid credentials");
+      }
+    });
+  };
+
+
+
   const [menuOpen, setMenuOpen] = useState(false);
   return (
-    // <div className={`content ${menuOpen ? 'shifted' : ''}`}>
       <form className='main-body' onSubmit={handleSubmit}>
         <h3>Sign In</h3>
         <div className="mb-3">
@@ -85,13 +101,37 @@ const Login = () => {
 }
 
 export default Login
-    // try{
-    //   const res = await axios.post('https://knightwatch-backend.onrender.com/api/login', {
-    //     email, password
-    //   })
-    //   const data = await res.data;
-    //   return data;
-    // }
-    // catch(err){
-    //   console.log("send request failed", err);
-    // }
+
+  // const sendRequest = async () => {
+  //     const res = await axios.post('http://localhost:5000/api/login', {
+  //       email, password
+  //   }).catch((err) => console.log("incorrect credentials",err));
+
+
+  //     const data = await res.data;
+  //     return data;
+  // }
+  // const sendRequest = async () => {
+  //   try{
+  //     const res = await axios.post('http://localhost:5000/api/login', {
+  //       email, password
+  //     })
+  //     const data = await res.data;
+  //     return data;
+  //   }
+  //   catch(err){
+  //     console.log("send request failed", err);
+  //   }
+  // }
+
+
+
+
+
+      // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   let arr = [email, password];
+  //   sendRequest().then(()=>dispatch(authActions.login())).then(() => 
+  //     history("/user")
+  //   )
+  // }

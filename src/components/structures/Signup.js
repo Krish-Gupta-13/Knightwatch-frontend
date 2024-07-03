@@ -11,7 +11,7 @@ const Signup = () => {
   const [name, setName]  = useState('');
   const [email, setEmail]  = useState('');
   const [password, setPassword]  = useState('');
-
+  const [wrongCredentials, setWrongCredentials] = useState('');
 
   const handleName = (e) => {
     setName(e.target.value)
@@ -24,27 +24,40 @@ const Signup = () => {
     setPassword(e.target.value)
   }
 
+
   const sendRequest = async () => {
-    const res = await axios.post("https://knightwatch-backend.onrender.com/api/signup", {
-      name: name,
-      email: email,
-      password: password,
-    }).catch((err) => console.log("email already exists!", err));
+    try{
+      const res = await axios.post("http://localhost:5000/api/signup", {
+        name: name,
+        email: email,
+        password: password,
+      })
+      console.log("user signed up")
       const data = await res.data;
       return data;
+    }
+    catch(err){
+      setWrongCredentials("Email already exists! sendrequest wla");
+      console.log("email already exists!", err);
+    }
   }
 
+
   // submit handler
-  const handleSubmit = (e) => {
+
+  const handleSubmit = (e, err) => {
     e.preventDefault();
-    // console.log(e.name)
     let arr = [name, email, password]
-    // console.log(arr)
-    sendRequest().then(() => 
-      history("/login")
-    )
-  }
-   
+    sendRequest().then((data, err) => {
+      if (data) {
+        history("/login");
+      } else {
+        
+        setWrongCredentials("Email already exists! handlesubmit wla");
+        console.log("email already exists!");
+      }
+    });
+  };
  
 
   return (
@@ -59,8 +72,10 @@ const Signup = () => {
           placeholder="Enter Full Name"
           required="true"
         />
-      </div>
-      
+        </div>
+        
+
+        
       <div className="mb-3">
         <label>Email address</label>
         <input
@@ -97,7 +112,7 @@ export default Signup
 
   // const sendRequest = async () => {
   //   try {
-  //     const res = await axios.post("https://knightwatch-backend.onrender.com/api/signup", {
+  //     const res = await axios.post("http://localhost:5000/api/signup", {
   //       name: name,
   //       email: email,
   //       password: password,
@@ -109,3 +124,15 @@ export default Signup
 
   //   }
   // };
+
+
+  
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   // console.log(e.name)
+  //   let arr = [name, email, password]
+  //   // console.log(arr)
+  //   sendRequest().then(() => 
+  //     history("/login")
+  //   )
+  // }

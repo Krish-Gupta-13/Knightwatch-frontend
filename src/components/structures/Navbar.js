@@ -23,14 +23,15 @@ function NavScrollExample() {
 
   const sendLogoutRequest = async () => {
     try {
-      const res = await axios.post("https://knightwatch-backend.onrender.com/api/logout", null, {
+      const res = await axios.post("http://localhost:5000/api/logout", null, {
         withCredentials: true,
       });
+      console.log("user logged out successfully")
       if (res.status === 200) {
         return res;
       }
     } catch (err) {
-      console.log(err);
+      console.log("something went wrong while logging out the user", err);
     }
     return new Error("Unable to logout! Please try again");
   };
@@ -46,7 +47,7 @@ function NavScrollExample() {
 
 
   const sendDesc = async () => {
-    const res = await axios.get('https://knightwatch-backend.onrender.com/api/user', {
+    const res = await axios.get('http://localhost:5000/api/user', {
       withCredentials: true
     }).catch((err)=> console.log('Error fetching user data:', err))
     const data = res.data;
