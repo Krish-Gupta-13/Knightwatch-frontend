@@ -1,4 +1,4 @@
-import React from 'react';
+import {React, useState} from 'react';
 import { Link } from 'react-router-dom';
 import ChessBoard from '../images/chessboard.png'
 import HomeStyling from '../styles/Home.css'
@@ -8,6 +8,7 @@ import Blitz from './Blitz'
 
 function Home() {
   return (
+
     <div className=" home-container">
     <Link to={'/clock'} className="no-dec"><button className="option no-dec" id="play-online">
         <div className="icon">

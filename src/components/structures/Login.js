@@ -4,6 +4,8 @@ import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { authActions } from '../../store';
 import LoginStyling from '../styles/Login.css'
+import { Link } from 'react-router-dom';
+import {Modal, Button} from 'react-bootstrap';
 
 const Login = () => {
   const dispatch = useDispatch()
@@ -11,6 +13,9 @@ const Login = () => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const [loggedIn, setLoggedIn] = useState('');
+  const [showModal, setShowModal] = useState(false);
 
   const handleEmail = (e) => {
     setEmail(e.target.value);
@@ -24,13 +29,17 @@ const Login = () => {
       const res = await axios.post('http://localhost:5000/api/login', {
         email, password
       });
-
-      console.log("user logged in successfully")
+      setLoggedIn('Logged In successfully!');
+      console.log("user logged in successfully");
       const data = res.data;
       return data;
       
     } catch (err) {
+      setErrorMessage('* Invalid Credentials');
         console.log("Login failed with status", err.response.status);
+        setTimeout(() => {
+          setErrorMessage('');
+        }, 4000);
     }
   };
   
@@ -38,12 +47,16 @@ const Login = () => {
 
   const handleSubmit = (e, err) => {
     e.preventDefault();
+    setErrorMessage('');
     sendRequest().then((data, err) => {
       if (data) {
         dispatch(authActions.login());
-        history("/user");
+        setShowModal(true);
+        setTimeout(() => {
+          setShowModal(false);
+          history("/user");
+        }, 500);
       } else {
-        // <alert>"Invalid credentials"</alert>
         console.log("Invalid credentials");
       }
     });
@@ -53,6 +66,8 @@ const Login = () => {
 
   const [menuOpen, setMenuOpen] = useState(false);
   return (
+  <div>
+    
       <form className='main-body' onSubmit={handleSubmit}>
         <h3>Sign In</h3>
         <div className="mb-3">
@@ -75,6 +90,15 @@ const Login = () => {
             required="true"
           />
         </div>
+
+        
+        {errorMessage && (
+          <div className="alert-danger errormessage" role="alert">
+            {errorMessage}
+          </div>
+        )}
+
+
         <div className="mb-3">
           <div className="custom-control custom-checkbox">
             <input
@@ -93,10 +117,18 @@ const Login = () => {
           </button>
         </div>
         <p className="forgot-password text-right">
-          Not a user? <a href="/signup">SignUp</a>
+          Not a user? <Link to={"/signup"}>SignUp</Link>
         </p>
       </form>
-    // </div>
+      
+      <Modal show={showModal} onHide={() => setShowModal(false)}>
+        <Button variant="success" onClick={() => setShowModal(false)}>
+        Login Successful! 
+        </Button>
+    </Modal>
+
+    </div>
+      
   )
 }
 

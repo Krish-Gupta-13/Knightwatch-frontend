@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import SignupStyling from "../styles/Signup.css"
 import axios from "axios"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+import {Modal, Button} from 'react-bootstrap';
 
 const Signup = () => {
 
@@ -11,7 +12,8 @@ const Signup = () => {
   const [name, setName]  = useState('');
   const [email, setEmail]  = useState('');
   const [password, setPassword]  = useState('');
-  const [wrongCredentials, setWrongCredentials] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const [showModal, setShowModal] = useState(false);
 
   const handleName = (e) => {
     setName(e.target.value)
@@ -37,8 +39,11 @@ const Signup = () => {
       return data;
     }
     catch(err){
-      setWrongCredentials("Email already exists! sendrequest wla");
+      setErrorMessage("* Email already exists!");
       console.log("email already exists!", err);
+      setTimeout(() => {
+        setErrorMessage('');
+      }, 5000);
     }
   }
 
@@ -47,13 +52,19 @@ const Signup = () => {
 
   const handleSubmit = (e, err) => {
     e.preventDefault();
+    setErrorMessage('');
     let arr = [name, email, password]
     sendRequest().then((data, err) => {
       if (data) {
-        history("/login");
+
+        setShowModal(true);
+        setTimeout(() => {
+          setShowModal(false);
+          history("/login");
+        }, 1000);
+       
       } else {
         
-        setWrongCredentials("Email already exists! handlesubmit wla");
         console.log("email already exists!");
       }
     });
@@ -61,6 +72,12 @@ const Signup = () => {
  
 
   return (
+    <div>
+    <Modal show={showModal} onHide={() => setShowModal(false)}>
+        <Button variant="success" onClick={() => setShowModal(false)}>
+        Registered Successfully! 
+        </Button>
+    </Modal>
     <form className='main-body' onSubmit={handleSubmit}>
       <h3>Sign Up</h3>
       <div className="mb-3">
@@ -73,8 +90,6 @@ const Signup = () => {
           required="true"
         />
         </div>
-        
-
         
       <div className="mb-3">
         <label>Email address</label>
@@ -96,15 +111,24 @@ const Signup = () => {
           required="true"
         />
       </div>
+
+      {errorMessage && (
+        <div className="alert-danger errormessage" role="alert">
+          {errorMessage}
+        </div>
+      )}
+
+
       <div className="d-grid">
         <button type="submit" className="btn btn-success">
           Sign Up
         </button>
       </div>
       <p className="forgot-password text-right">
-        Already registered <a href="/login">sign in?</a>
+        Already registered <Link to={"/login"}>sign in?</Link>
       </p>
     </form>
+    </div>
   )
 }
 

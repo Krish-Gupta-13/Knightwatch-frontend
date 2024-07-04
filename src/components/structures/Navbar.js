@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Button from "react-bootstrap/Button";
+// import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
@@ -12,6 +12,8 @@ import { authActions } from "../../store/index.js";
 import NavbarStyling from '../styles/Navbar.css'
 import { login, logout, clock} from '../../store/index.js'
 import { useNavigate } from 'react-router-dom';
+import {Modal, Button} from 'react-bootstrap';
+
 
 axios.defaults.withCredentials = true;
 
@@ -20,6 +22,9 @@ function NavScrollExample() {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector((state) => state.isLoggedIn);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+
+
 
   const sendLogoutRequest = async () => {
     try {
@@ -37,7 +42,13 @@ function NavScrollExample() {
   };
 
   const handleLogout = () => {
-    sendLogoutRequest().then(() => dispatch(authActions.logout()));
+    sendLogoutRequest().then(() => dispatch(authActions.logout())).then(() => {
+      setShowModal(true);
+        setTimeout(() => {
+          setShowModal(false);
+          history("/login");
+        }, 500);
+    })
   };
 
   const handleToggle = () => {
@@ -62,13 +73,24 @@ function NavScrollExample() {
 
   const handleHome = (e) => {
     e.preventDefault();
-    sendDesc().then(()=>dispatch(authActions.clock())).then(() => 
+    sendDesc().then(()=>dispatch(authActions.clock())).then(() => {
+      // setShowModal(true);
+      //   setTimeout(() => {
+      //     setShowModal(false);
+      //     history("/user");
+      //   }, 1000);
       history("/user")
+    }
     )
   }
 
   return (
     <React.Fragment>
+    <Modal show={showModal} onHide={() => setShowModal(false)}>
+        <Button variant="success" onClick={() => setShowModal(false)}>
+        Logged Out Successfully! 
+        </Button>
+    </Modal>
       <Navbar expand="lg" className="bg-body-tertiary full-body">
         <Container fluid className="full-body">
           <Navbar.Brand className="heading" >KnightWatch</Navbar.Brand>

@@ -72,7 +72,17 @@ form{
   margin-top: 4%;
 }
 
+.errormessage{
+  height: 2rem;
+  background-color: rgba(34, 35, 58, 0.2);
+  color: red;
+  border: none;
+  display: flex;
+  align-items: center;
 
+  padding-bottom: 1.5rem;
+  padding-left: 1rem;
+}
 
 @media only screen and (max-width: 600px) and (min-width: 100px){
 
