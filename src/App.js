@@ -9,13 +9,12 @@ import Navbar from './components/structures/Auth/Navbar'
 import Description from './components/structures/Pages/Description';
 import { useSelector } from "react-redux";
 import ChessClock from './components/structures/Clocks/Custom';
-import Bullet from './components/structures/Clocks/Bullet'
-import Rapid from './components/structures/Clocks/Rapid'
-import Blitz from './components/structures/Clocks/Blitz'
-import Footer from './components/structures/Footer'
-import Profile from './components/structures/Pages/Profile'
-
-
+import Bullet from './components/structures/Clocks/Bullet';
+import Rapid from './components/structures/Clocks/Rapid';
+import Blitz from './components/structures/Clocks/Blitz';
+import Footer from './components/structures/Footer';
+import Profile from './components/structures/Pages/Profile';
+import Edit from './components/structures/Pages/Edit'
 
 function App() {
 
@@ -35,6 +34,7 @@ function App() {
           <Route path="/login" element={<Login/>} />
           <Route path="/signup" element={<Signup/>} />
           <Route path="/profile" element={<Profile/>} />
+          <Route path="/edit" element={<Edit/>} />
           {isLoggedIn && <Route path="/user" element={<Welcome/>} />}
           {isLoggedIn && <Route path="/clock" element={<ChessClock/>} />}
           {isLoggedIn && <Route path="/bullet" element={<Bullet/>} />}

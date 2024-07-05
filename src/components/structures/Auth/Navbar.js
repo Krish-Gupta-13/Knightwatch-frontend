@@ -92,7 +92,7 @@ function NavScrollExample() {
         </Button>
     </Modal>
     <div>
-      <Navbar expand="lg" className="bg-body-tertiary full-body">
+      <Navbar expand="sm" className="bg-body-tertiary full-body">
         <Container fluid className="full-body">
         {/*
           <Link to={'/profile'}><Navbar.Brand className="heading" >KnightWatch</Navbar.Brand></Link>
@@ -103,7 +103,7 @@ function NavScrollExample() {
           onClick={handleToggle} />
           <Navbar.Collapse id="navbarScroll">
             <Nav
-              className="my-0 my-lg-0"
+              // className="my-0 my-lg-0"
               // style={{ maxHeight: "150px"}}
               navbarScroll
             >
@@ -115,11 +115,11 @@ function NavScrollExample() {
                 
               </NavDropdown>
             </Nav>
-            <Form className="d-flex islog">
+            <Form className="d-flex ">
               {!isLoggedIn && 
-                <Link to={"/login"} className="no-dec">
+                <Link to={"/login"} className="no-dec isLog">
                   <button
-                    className="btn btn-outline-dark header-btn signin"
+                    className="btn btn-outline-dark header-btn islog signin"
                     type="submit"
                   >
                     LogIn
@@ -127,14 +127,14 @@ function NavScrollExample() {
                 </Link>
               }
               {!isLoggedIn && 
-                <Link to={"/signup"} className="no-dec">
+                <Link to={"/signup"} className="no-dec isSign">
                   <button className="btn btn-outline-dark signup" type="submit">
                     SignUp
                   </button>
                 </Link>
               }
               {isLoggedIn && 
-                <Link to={"/login"} className="no-dec-1">
+                <Link to={"/login"} className="no-dec-1 isOut">
                   <button
                     className="btn btn-outline-dark logout"
                     type="submit"

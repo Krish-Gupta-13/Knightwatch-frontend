@@ -1,0 +1,140 @@
+/* src/Profile.css */
+
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #1a1a1a;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 60%;
+    margin: 0 auto;
+    height: 80vh;
+  }
+  
+  .profile-header {
+    text-align: center;
+  }
+  
+  .profile-picture {
+    width: 100px;
+    height: 100px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-bottom: 20px;
+  }
+  
+  .profile-name {
+    font-size: 24px;
+    margin: 10px 0;
+  }
+  
+  .profile-username {
+    font-size: 14px;
+    color: #888;
+  }
+  
+  .profile-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+  }
+  
+  .profile-links a {
+    color: white;
+    font-size: 24px;
+    text-decoration: none;
+  }
+  
+  .profile-details {
+    margin-top: 20px;
+    width: 100%;
+  }
+  .twitter{
+    color: white;
+    background-color: white;
+  }
+  
+  .profile-item {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+  }
+
+  .profile-item i {
+    /* to transform phone number wla */
+    -webkit-transform: scaleX(-1); 
+    transform: scaleX(-1);
+    margin-right: 10px;
+  }
+  
+  .edit{
+    text-decoration: none;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    height: 1rem;
+    width: 2rem;
+    margin-left: 60%;
+
+  }
+
+
+  /* Responsive Design */
+  
+  @media (max-width: 768px) {
+    .profile-container {
+      padding: 15px;
+    }
+  
+    .profile-name {
+      font-size: 20px;
+    }
+  
+    .profile-username {
+      font-size: 12px;
+    }
+  
+    .profile-links {
+      gap: 10px;
+    }
+  
+    .profile-links a {
+      font-size: 20px;
+    }
+  
+    .profile-item {
+      margin: 8px 0;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .profile-container {
+      margin-top: 6vh;
+      padding: 10px;
+      width: 80%;
+      height: 70vh;
+    }
+  
+    .profile-name {
+      font-size: 18px;
+    }
+  
+    .profile-username {
+      font-size: 11px;
+    }
+  
+    .profile-links {
+      gap: 8px;
+    }
+  
+    .profile-links a {
+      font-size: 18px;
+    }
+  
+    .profile-item {
+      margin: 6px 0;
+    }
+  }
+  
