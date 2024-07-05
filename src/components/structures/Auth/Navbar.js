@@ -74,11 +74,6 @@ function NavScrollExample() {
   const handleHome = (e) => {
     e.preventDefault();
     sendDesc().then(()=>dispatch(authActions.clock())).then(() => {
-      // setShowModal(true);
-      //   setTimeout(() => {
-      //     setShowModal(false);
-      //     history("/user");
-      //   }, 1000);
       history("/user")
     }
     )

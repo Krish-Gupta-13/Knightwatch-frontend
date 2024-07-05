@@ -31,10 +31,9 @@ const PersonalInfoForm = () => {
             <input type="text" id="college" name="college" placeholder="Institute" />
           </div>         
            <button type="submit">Save</button>
-
         </div>
-<hr />
 
+  <hr />
 
         <h2 className='section-2'>Personal</h2>
         <p>Your social links.</p>

@@ -13,8 +13,8 @@ import Bullet from './components/structures/Clocks/Bullet';
 import Rapid from './components/structures/Clocks/Rapid';
 import Blitz from './components/structures/Clocks/Blitz';
 import Footer from './components/structures/Footer';
-import Profile from './components/structures/Pages/Profile';
-import Edit from './components/structures/Pages/Edit'
+import Profile from './components/structures/Profile/Profile';
+import Edit from './components/structures/Profile/Edit'
 
 function App() {
 
@@ -33,8 +33,8 @@ function App() {
         <Routes>
           <Route path="/login" element={<Login/>} />
           <Route path="/signup" element={<Signup/>} />
-          <Route path="/profile" element={<Profile/>} />
-          <Route path="/edit" element={<Edit/>} />
+          {isLoggedIn &&<Route path="/profile" element={<Profile/>} />}
+          {isLoggedIn &&<Route path="/edit" element={<Edit/>} />}
           {isLoggedIn && <Route path="/user" element={<Welcome/>} />}
           {isLoggedIn && <Route path="/clock" element={<ChessClock/>} />}
           {isLoggedIn && <Route path="/bullet" element={<Bullet/>} />}

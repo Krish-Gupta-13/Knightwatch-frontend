@@ -56,15 +56,12 @@ const Signup = () => {
     let arr = [name, email, password]
     sendRequest().then((data, err) => {
       if (data) {
-
         setShowModal(true);
         setTimeout(() => {
           setShowModal(false);
           history("/login");
         }, 1000);
-       
       } else {
-        
         console.log("email already exists!");
       }
     });
@@ -78,6 +75,7 @@ const Signup = () => {
         Registered Successfully! 
         </Button>
     </Modal>
+    <div className='container'>
     <form className='main-body' onSubmit={handleSubmit}>
       <h3>Sign Up</h3>
       <div className="mb-3">
@@ -128,6 +126,7 @@ const Signup = () => {
         Already registered <Link to={"/login"}>sign in?</Link>
       </p>
     </form>
+    </div>
     </div>
   )
 }

@@ -8,17 +8,7 @@ axios.defaults.withCredentials = true;
 
 let firstRender = true;
 const Welcome = () => {
-
   const [user, setUser] = useState('');
-
-  // const refreshToken = async () => {
-  //     const res = await axios.get('http://localhost:5000/api/refresh', {
-  //     withCredentials: true
-  //     }).catch ((err) => console.log('Error refreshing token:', err)) 
-  //     const data = res.data;
-  //     return data;    
-  // }
-
   const refreshToken = async () => {
     try{
       const res = await axios.get('http://localhost:5000/api/refresh', {
@@ -42,9 +32,6 @@ const Welcome = () => {
       console.log('Error fetching user data:', err)
     }
   }
-
-
-
 
   useEffect(() => {
     if(firstRender){
@@ -75,6 +62,7 @@ const Welcome = () => {
 
    return (
     <React.Fragment>
+    
         <Home/>
     </React.Fragment>
 
@@ -106,4 +94,14 @@ export default Welcome
   //     console.log('Error fetching user data:', err);
   //     return null;
   //   }
+  // }
+
+
+
+    // const refreshToken = async () => {
+  //     const res = await axios.get('http://localhost:5000/api/refresh', {
+  //     withCredentials: true
+  //     }).catch ((err) => console.log('Error refreshing token:', err)) 
+  //     const data = res.data;
+  //     return data;    
   // }

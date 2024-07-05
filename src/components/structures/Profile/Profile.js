@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import axios from 'axios';
 import '../../styles/Profile.css';
 
 
@@ -15,7 +15,6 @@ const Profile = () => {
           {/* Placeholder for profile picture */}
         </div>
         <h1 className="profile-name">Krish Gupta</h1>
-        {/*<p className="profile-username">#floren</p>*/}
         <div className="profile-links">
           <a href="https://github.com" target="_blank" rel="noopener noreferrer">
             <i className="fab fa-github"></i>
@@ -34,19 +33,19 @@ const Profile = () => {
       <div className="profile-details">
         <div className="profile-item">
           <i className="fas fa-envelope"></i>
-          <span>krishguptaa13@gmail.com</span>
+          <span>user.email</span>
         </div>
         <div className="profile-item">
           <i className="fas fa-map-marker-alt"></i>
-          <span>-</span>
+          <span>No Address Added Yet</span>
         </div>
         <div className="profile-item">
           <i className="fas fa-university"></i>
-          <span>National Institute of Technology, Raipur</span>
+          <span>No University Added Yet</span>
         </div>
         <div className="profile-item">
         <i className="fa fa-phone"></i>
-        <span>National Institute of Technology, Raipur</span>
+        <span>No Phone Number Added Yet</span>
       </div>
       
       </div>

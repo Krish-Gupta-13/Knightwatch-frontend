@@ -32,7 +32,7 @@ html, body {
 } */
 
 .isLog{
-    margin-left: 110%;
+    margin-left: 160%;
 }
 
 /* .isSign{
@@ -41,7 +41,7 @@ html, body {
   
 
 .isOut{
-    margin-left: 100%;
+    margin-left: 150%;
     display:flex;
     text-align: right;
 }

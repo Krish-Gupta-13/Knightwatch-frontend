@@ -67,7 +67,7 @@ const Login = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   return (
   <div>
-    
+    <div className='container'>
       <form className='main-body' onSubmit={handleSubmit}>
         <h3>Sign In</h3>
         <div className="mb-3">
@@ -120,6 +120,7 @@ const Login = () => {
           Not a user? <Link to={"/signup"}>SignUp</Link>
         </p>
       </form>
+      </div>
       
       <Modal show={showModal} onHide={() => setShowModal(false)}>
         <Button variant="success" onClick={() => setShowModal(false)}>
