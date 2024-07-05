@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
-import { authActions } from '../../store';
-import LoginStyling from '../styles/Login.css'
+import { authActions } from '../../../store';
+import LoginStyling from '../../styles/Login.css'
 import { Link } from 'react-router-dom';
 import {Modal, Button} from 'react-bootstrap';
 

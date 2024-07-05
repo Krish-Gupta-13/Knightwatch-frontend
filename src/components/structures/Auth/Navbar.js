@@ -8,9 +8,9 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { authActions } from "../../store/index.js";
-import NavbarStyling from '../styles/Navbar.css'
-import { login, logout, clock} from '../../store/index.js'
+import { authActions } from "../../../store/index.js";
+import NavbarStyling from '../../styles/Navbar.css'
+import { login, logout, clock} from '../../../store/index.js'
 import { useNavigate } from 'react-router-dom';
 import {Modal, Button} from 'react-bootstrap';
 
@@ -91,16 +91,20 @@ function NavScrollExample() {
         Logged Out Successfully! 
         </Button>
     </Modal>
+    <div>
       <Navbar expand="lg" className="bg-body-tertiary full-body">
         <Container fluid className="full-body">
+        {/*
+          <Link to={'/profile'}><Navbar.Brand className="heading" >KnightWatch</Navbar.Brand></Link>
+          */}
           <Navbar.Brand className="heading" >KnightWatch</Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" 
           
           onClick={handleToggle} />
           <Navbar.Collapse id="navbarScroll">
             <Nav
-              className="me-auto my-0 my-lg-0"
-              style={{ maxHeight: "150px"}}
+              className="my-0 my-lg-0"
+              // style={{ maxHeight: "150px"}}
               navbarScroll
             >
             {isLoggedIn && <> <Link to={"/user"} className="no-dec"><Nav.Link onClick={handleHome}>Home</Nav.Link></Link></>}
@@ -115,7 +119,7 @@ function NavScrollExample() {
               {!isLoggedIn && 
                 <Link to={"/login"} className="no-dec">
                   <button
-                    className="btn btn-outline-dark header-btn islog signin"
+                    className="btn btn-outline-dark header-btn signin"
                     type="submit"
                   >
                     LogIn
@@ -124,15 +128,15 @@ function NavScrollExample() {
               }
               {!isLoggedIn && 
                 <Link to={"/signup"} className="no-dec">
-                  <button className="btn btn-outline-dark islog signup" type="submit">
+                  <button className="btn btn-outline-dark signup" type="submit">
                     SignUp
                   </button>
                 </Link>
               }
               {isLoggedIn && 
-                <Link to={"/login"} className="no-dec">
+                <Link to={"/login"} className="no-dec-1">
                   <button
-                    className="btn btn-outline-dark isout logout"
+                    className="btn btn-outline-dark logout"
                     type="submit"
                     onClick={handleLogout}
                   >
@@ -140,10 +144,21 @@ function NavScrollExample() {
                   </button>
                 </Link>
               }
+              {isLoggedIn && 
+                <Link to={"/profile"} className="no-dec-1">
+                  <button
+                    className="btn btn-outline-dark profile"
+                    type="submit"
+                  >
+                    Profile
+                  </button>
+                </Link>
+              }
             </Form>
           </Navbar.Collapse>
         </Container>
       </Navbar>
+      </div>
       <div className={`content ${menuOpen ? "shifted" : ""}`}></div>
     </React.Fragment>
   );

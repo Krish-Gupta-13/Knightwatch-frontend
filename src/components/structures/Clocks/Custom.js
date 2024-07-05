@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import '../styles/ChessClock.css';
+import '../../styles/ChessClock.css';
 
 const ChessClock = () => {
   const [turn, setTurn] = useState(-1);

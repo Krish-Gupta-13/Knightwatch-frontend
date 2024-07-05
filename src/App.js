@@ -1,24 +1,31 @@
-import React from 'react';
+import {React, useState} from 'react';
 import './App.css';
-import Login from './components/structures/Login';
-import Signup from './components/structures/Signup';
-import Welcome from './components/structures/Welcome';
+import Login from './components/structures/Auth/Login';
+import Signup from './components/structures/Auth/Signup';
+import Welcome from './components/structures/Pages/Welcome';
 import {Routes, Route} from "react-router-dom"
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import Navbar from './components/structures/Navbar'
-import Description from './components/structures/Description';
+import Navbar from './components/structures/Auth/Navbar'
+import Description from './components/structures/Pages/Description';
 import { useSelector } from "react-redux";
-import ChessClock from './components/structures/ChessClock';
-import Bullet from './components/structures/Bullet'
-import Rapid from './components/structures/Rapid'
-import Blitz from './components/structures/Blitz'
+import ChessClock from './components/structures/Clocks/Custom';
+import Bullet from './components/structures/Clocks/Bullet'
+import Rapid from './components/structures/Clocks/Rapid'
+import Blitz from './components/structures/Clocks/Blitz'
 import Footer from './components/structures/Footer'
+import Profile from './components/structures/Pages/Profile'
+
+
 
 function App() {
+
+
+
   const isLoggedIn = useSelector((state) => state.isLoggedIn);
   console.log(isLoggedIn);
   return (
-    <React.Fragment>
+
+    <div>
       <header>
         <Navbar/>
       </header>
@@ -27,6 +34,7 @@ function App() {
         <Routes>
           <Route path="/login" element={<Login/>} />
           <Route path="/signup" element={<Signup/>} />
+          <Route path="/profile" element={<Profile/>} />
           {isLoggedIn && <Route path="/user" element={<Welcome/>} />}
           {isLoggedIn && <Route path="/clock" element={<ChessClock/>} />}
           {isLoggedIn && <Route path="/bullet" element={<Bullet/>} />}
@@ -36,10 +44,7 @@ function App() {
           <Route path="/logout" element={<Signup/>} />
         </Routes>
       </main>
-      
-  
-      
-    </React.Fragment>
+    </div>
   );
 }
 

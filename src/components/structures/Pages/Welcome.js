@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import ChessClock from './ChessClock';
+import ChessClock from '../Clocks/Custom.js';
 import Home from './Home.js';
-import HomeStyling from '../styles/Home.css'
+import HomeStyling from '../../styles/Home.css'
 axios.defaults.withCredentials = true;
 
 let firstRender = true;
@@ -75,7 +75,6 @@ const Welcome = () => {
 
    return (
     <React.Fragment>
-    
         <Home/>
     </React.Fragment>
 

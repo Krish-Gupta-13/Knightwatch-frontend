@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import SignupStyling from "../styles/Signup.css"
+import SignupStyling from "../../styles/Signup.css"
 import axios from "axios"
 import { Link, useNavigate } from "react-router-dom"
 import {Modal, Button} from 'react-bootstrap';

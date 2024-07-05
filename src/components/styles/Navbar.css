@@ -1,11 +1,15 @@
-body{
-    background-color: #6dc44e;
+*{
+    margin: 0;
+    padding: 0;
+
 }
-.full-body{
-    /* background-color: #07ef07; */
-    background-color: #4fafd2;
-    border: 0px solid black;
+
+
+.bg-body-tertiary .full-body{
+    background-color: teal;
 }
+
+
 .navbar-brand {
     font: 4rem;
     margin-left: 5%;
@@ -17,23 +21,28 @@ body{
     margin-left: 10px;
 }
 
-.navbar{
-    height: 10vh;
-}
+/* .navbar{
+    height: 6%;
+} */
 
 
 .islog{
     margin-left: 60%;
 }
 
+
 .no-dec{
     text-decoration: none;
 }
 
+.no-dec-1{
+    text-decoration: none;
+}
 
 .heading{
     font-size: 1.6rem;
 }
+
 
 
 @media only screen and (max-width: 600px) and (min-width: 100px){

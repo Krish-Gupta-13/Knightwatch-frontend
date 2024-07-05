@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from "react-redux";
-import DescriptionStyling from '../styles/Description.css'
+import DescriptionStyling from '../../styles/Description.css'
 import axios from 'axios';
 
 

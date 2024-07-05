@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import '../styles/ChessClock.css';
+import '../../styles/ChessClock.css';
 
-const Rapid = () => {
+const Bullet = () => {
   const [turn, setTurn] = useState(-1);
   const [timer1, setTimer1] = useState(false);
   const [timer2, setTimer2] = useState(false);
-  const [time1, setTime1] = useState({ min: 15, sec: 0, count: 99 });
-  const [time2, setTime2] = useState({ min: 15, sec: 0, count: 99 });
+  const [time1, setTime1] = useState({ min: 1, sec: 0, count: 99 });
+  const [time2, setTime2] = useState({ min: 1, sec: 0, count: 99 });
   const [moves1, setMoves1] = useState(0);
   const [moves2, setMoves2] = useState(0);
 
@@ -89,8 +89,8 @@ const Rapid = () => {
   const reset = () => {
     setTimer1(false);
     setTimer2(false);
-    setTime1({ min: 15, sec: 0, count: 99 });
-    setTime2({ min: 15, sec: 0, count: 99 });
+    setTime1({ min: 1, sec: 0, count: 99 });
+    setTime2({ min: 1, sec: 0, count: 99 });
     setMoves1(0);
     setMoves2(0);
     setTurn(-1);
@@ -175,4 +175,4 @@ const Rapid = () => {
   );
 };
 
-export default Rapid;
+export default Bullet;

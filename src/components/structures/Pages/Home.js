@@ -1,10 +1,10 @@
 import {React, useState} from 'react';
 import { Link } from 'react-router-dom';
-import ChessBoard from '../images/chessboard.png'
-import HomeStyling from '../styles/Home.css'
-import Bullet from './Bullet'
-import Rapid from './Rapid'
-import Blitz from './Blitz'
+import ChessBoard from '../../images/chessboard.png'
+import HomeStyling from '../../styles/Home.css'
+import Bullet from '../Clocks/Bullet'
+import Rapid from '../Clocks/Rapid'
+import Blitz from '../Clocks/Blitz'
 
 function Home() {
   return (
