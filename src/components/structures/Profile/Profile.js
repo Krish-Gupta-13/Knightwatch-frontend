@@ -1,10 +1,60 @@
-import React from 'react';
+import {React, useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import '../../styles/Profile.css';
+axios.defaults.withCredentials = true;
 
 
 const Profile = () => {
+
+  const [user, setUser] = useState('');
+  const [profileUser, setProfileUser] = useState('');
+
+  const sendUserRequest = async () => {
+    try{
+      const res = await axios.get('http://localhost:5000/api/user', {
+        withCredentials: true
+      })
+      const data = res.data;
+      console.log(data);
+      return data;
+    }catch(err){
+      console.log('Error fetching user data:', err)
+    }
+  }
+  const sendProfileRequest = async () => {
+    try{
+      const res = await axios.get('http://localhost:5000/api/profile', {
+        withCredentials: true
+      })
+      const profileData = res.data;
+      console.log(profileData);
+      return profileData;
+    }catch(err){
+    console.log("Error fetching user data:", err);
+    }
+  }
+
+
+  useEffect(() => {
+    sendUserRequest().then((data) => {
+      if(data){
+        setUser(data.user);
+      }
+    })
+  },[])
+  
+  useEffect(() => {
+  sendProfileRequest().then((data) => {
+    if(data){
+      setProfileUser(data.profileUser);
+    }
+  })
+  },[])
+
+
+
+
   return (
     <div className="profile-container">
       <div className="edit">
@@ -14,7 +64,7 @@ const Profile = () => {
         <div className="profile-picture">
           {/* Placeholder for profile picture */}
         </div>
-        <h1 className="profile-name">Krish Gupta</h1>
+        <h1 className="profile-name">{user.name}</h1>
         <div className="profile-links">
           <a href="https://github.com" target="_blank" rel="noopener noreferrer">
             <i className="fab fa-github"></i>
@@ -33,19 +83,19 @@ const Profile = () => {
       <div className="profile-details">
         <div className="profile-item">
           <i className="fas fa-envelope"></i>
-          <span>user.email</span>
+          <span>{user.email}</span>
         </div>
         <div className="profile-item">
           <i className="fas fa-map-marker-alt"></i>
-          <span>No Address Added Yet</span>
+          <span>{profileUser.location} </span>
         </div>
         <div className="profile-item">
           <i className="fas fa-university"></i>
-          <span>No University Added Yet</span>
+          <span>{profileUser.college}</span>
         </div>
         <div className="profile-item">
         <i className="fa fa-phone"></i>
-        <span>No Phone Number Added Yet</span>
+        <span>{profileUser.phone}</span>
       </div>
       
       </div>

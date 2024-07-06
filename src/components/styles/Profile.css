@@ -28,11 +28,12 @@
   .profile-name {
     font-size: 24px;
     margin: 10px 0;
+    color: white;
   }
   
   .profile-username {
     font-size: 14px;
-    color: #888;
+    color: white;
   }
   
   .profile-links {

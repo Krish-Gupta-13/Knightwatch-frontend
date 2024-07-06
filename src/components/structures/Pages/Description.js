@@ -10,6 +10,7 @@ const Description = () => {
 
   return (
     <div className="des-container">
+    
       <header>
         <h1>Chess Formats</h1>
       </header>
